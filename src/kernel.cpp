@@ -419,7 +419,7 @@ int  CliPPIndividual(int No_mutation, MatrixXd &r, MatrixXd &n, MatrixXd &minor_
 		if(tmp_col[ii] == 0){
 		    tmp_diff(0, 0) = 100.0;
 		    for(int jj = 1; jj < No_mutation; jj++){
-			tmp_diff(jj, 0) = diff(0, jj);
+			tmp_diff(jj, 0) = fabs(diff(0, jj));
 		    }
 		    for(unsigned int jj = 0; jj < tmp_col.size(); jj++){
 			tmp_diff(tmp_col[jj], 0) = tmp_diff(tmp_col[jj], 0) + 100.0;
@@ -429,7 +429,7 @@ int  CliPPIndividual(int No_mutation, MatrixXd &r, MatrixXd &n, MatrixXd &minor_
 		    }
 		}else{
 		    for(int jj = 0; jj < No_mutation - 1; jj++){
-			tmp_diff(jj, 0) = diff(jj, No_mutation - 1);
+			tmp_diff(jj, 0) = fabs(diff(jj, No_mutation - 1));
 		    }
 		    tmp_diff(No_mutation - 1, 0) = 100.0;
 		    for(unsigned int jj = 0; jj < tmp_col.size(); jj++){
