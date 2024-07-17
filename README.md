@@ -170,10 +170,10 @@ The second file outputs a detailed list of mutation assignment result, i.e., for
 If you are using this framework, please cite our methods description on bioRxiv:
 ```
 @article{CliPPmethod,
-    title = {CliP: subclonal architecture reconstruction of cancer cells in DNA sequencing data using a penalized likelihood model},
-    author = {Jiang, Yujie and Yu, Kaixian and Ji, Shuangxi and Shin, Seung Jun and Cao, Shaolong and Montierth, Matthew D and Huang, Licai and Kopetz, Scott and Msaouel, Pavlos and Wang, Jennifer Rui and Kimmel, Marek and Zhu, Hongtu and Wang, Wenyi},
+    title = {Pan-cancer subclonal mutation analysis of 7,827 tumors predicts clinical outcome},
+    author = {Jiang, Yujie and Montierth, Matthew D and Yu, Kaixian and Ji, Shuangxi and Guo, Shuai and Tran, Quang and Liu, Xiaoqian and Shin, Seung Jun and Cao, Shaolong and Li, Ruonan and Tang, Yuxin and Lesluyes, Tom and Kopetz, Scott and Ajani, Jaffer and Msaouel, Pavlos and Subudhi, Sumit K  and Aparicio, Ana and Sharma, Padmanee and Shen, John Paul and Sood, Anil K and Tarabichi, Maxime and Wang, Jennifer R and Kimmel, Marek and Van Loo, Peter and Zhu, Hongtu and Wang, Wenyi},
     journal = {bioRxiv},
-    year = {2021},
+    year = {2024},
     publisher = {Cold Spring Harbor Laboratory}
 }
 ```
