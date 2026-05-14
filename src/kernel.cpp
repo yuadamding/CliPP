@@ -196,10 +196,7 @@ int  CliPPIndividual(int No_mutation, MatrixXd &r, MatrixXd &n, MatrixXd &minor_
     MatrixXd B(No_mutation, 1);
     MatrixXd linear(No_mutation, 1);
     MatrixXd Minv(No_mutation, 1);
-    MatrixXd Minv_diag(No_mutation, No_mutation);
-    MatrixXd Minv_outer(No_mutation, No_mutation);
     MatrixXd delt(No_mutation * (No_mutation - 1) /2, 1);
-    MatrixXd inverted(No_mutation, No_mutation);
     
     double tag1, tag2, tag3, tag4, max_val = -10000.0;
     double residual = 100.0;
@@ -254,7 +251,6 @@ int  CliPPIndividual(int No_mutation, MatrixXd &r, MatrixXd &n, MatrixXd &minor_
         linear = DELTA * (alpha * eta_old + tau_new) - B.cwiseProduct(A);
 
 	Minv = 1.0 / ((B.cwiseProduct(B)).array() + double(No_mutation) * alpha);
-	Minv_diag = Minv.asDiagonal();
 
 	trace_g = -alpha * Minv.sum();
 	if(isnan(trace_g)){
@@ -262,11 +258,9 @@ int  CliPPIndividual(int No_mutation, MatrixXd &r, MatrixXd &n, MatrixXd &minor_
 	    return -1;
 	}
 	
-	
-	Minv_outer = Minv * (Minv.transpose());
-
-	inverted = Minv_diag.array() - 1.0 / (1.0 + trace_g) * (-alpha) * Minv_outer.array();
-	w_new = inverted * linear;
+	double minv_linear_dot = (Minv.array() * linear.array()).sum();
+	double rank1_scale = alpha / (1.0 + trace_g);
+	w_new = Minv.cwiseProduct(linear) + rank1_scale * Minv * minv_linear_dot;
 
 #ifdef _OPENMP
 #pragma omp parallel for
